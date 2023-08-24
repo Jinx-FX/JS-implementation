@@ -13,12 +13,23 @@
 // 4）宏任务执行完成后，再次读取微任务队列里的任务，依次类推。
 
 console.log(1)
+
+setTimeout(() => {
+  console.log(205)
+  Promise.resolve().then(() => {
+    console.log(305)
+  })
+}, 5000)
+
+
 setTimeout(() => {
   console.log(2)
   Promise.resolve().then(() => {
     console.log(3)
   })
 }, 1000)
+
+
 Promise.resolve().then(() => {
   console.log(4)
 }).then(() => {
@@ -61,4 +72,4 @@ console.log(11)
 
 // 宏任务：1 6 10 Re 11
 // 微任务：4 7 10end 5 20 21 13
-// 宏任务：2 3
+// 宏任务，微任务：2 3 205 305
