@@ -16,11 +16,12 @@ class Scheduler {
       while (this.running < this.concurrency && this.queue.length) {
         const promiseCreator = this.queue.shift();
         const promise = promiseCreator();
+        this.running++;
+
         promise.then(() => {
           this.running--;
           this.schedule();
         });
-        this.running++;
       }
     }
   }
