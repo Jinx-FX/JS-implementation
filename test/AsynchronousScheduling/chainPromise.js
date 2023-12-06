@@ -2,6 +2,7 @@
 // 请在不使用 `async` / `await` 语法的前提下完成
 // 完成promise的串行执行
 
+// Math.random() 会造成重复 res.push 的情况
 function getPromise (time) {
   return new Promise((resolve, reject) => {
     setTimeout(Math.random() > 0.5 ? resolve : reject, time, time)
@@ -11,9 +12,10 @@ function getPromise (time) {
 function chainPromise (arr) {
   let res = []
   return new Promise((resolve, reject) => {
+    let init = getPromise(arr.shift()), i =0
     arr
       .reduce((pre, cur) => {
-        return getPromise(pre)
+        return pre
           .then((result) => {
             res.push(result)
             return getPromise(cur)
@@ -22,7 +24,8 @@ function chainPromise (arr) {
             res.push(err)
             return getPromise(cur)
           })
-      })
+      }, init)
+      // 确保最后一项被 push 到 res 中
       .then((result) => {
         res.push(result)
       })
