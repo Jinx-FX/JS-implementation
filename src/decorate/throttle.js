@@ -4,7 +4,7 @@
 // 利用闭包，不管触发频率多高，每隔一段时间内执行一次
 
 /*
- * @param {function} fn - 需要防抖的函数
+ * @param {function} fn - 需要节流的函数
  * @param {number} time - 多长时间执行一次
  * @param {boolean} flag - 第一次是否执行
  */
