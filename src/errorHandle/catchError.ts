@@ -3,6 +3,8 @@
 // mark: for more reference
 // 1. https://effect.website/
 // 2. https://true-myth.js.org/
+// 3. https://github.com/colinhacks/zod
+// 4. https://arktype.io/
 
 function wait(ms: number) {
   return new Promise((resolve) => {
