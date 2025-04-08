@@ -53,6 +53,7 @@ Promise.resolve().then(() => {
 async function func () {
   console.log(10) // 同步代码
   await funcRe() // await 隐式返回promise
+  // mark: await 后面的代码被放入微任务队列中
   console.log("10end") // 这里的执行时机：在执行微任务时执行
 }
 

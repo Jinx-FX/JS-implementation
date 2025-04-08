@@ -6,6 +6,8 @@
 // 4. call、apply 是立即执行，bind 是返回绑定 this 之后的函数，如果这个新的函数作为构造函数被调用，
 // 那么 this 不再指向传入给 bind 的第一个参数，而是指向新生成的对象
 
+// mark: bind 会创建一个新函数，永久绑定 this，后续 call/apply 无法修改
+
 // 手写call
 Function.prototype.Call = function (context, ...args) {
   // context为undefined或null时，则this默认指向全局window
