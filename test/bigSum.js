@@ -61,9 +61,9 @@ function sumStrings (a, b) {
   while (a.length || b.length || c) {
     c += ~~a.pop() + ~~b.pop()
     res = c % 10 + res
-    c = c > 9
+    c = c > 9 ? 1 : 0
   }
-  return res.replace(/^0+/, '')
+  return res.replace(/^0+/, '') || '0'
 }
 
 console.log(sum(11111111111111111, 11111111111111111))
